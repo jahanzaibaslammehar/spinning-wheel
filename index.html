@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Empowerment</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        .wheel-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wheel {
+            width: 450px;
+            height: 800px;
+            position: relative;
+        }
+
+        .spin-button {
+            position: absolute;
+            top: 55.8%;
+            left: 51.3%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .pointer {
+            position: absolute;
+            top: 31.7%;
+            left: 51%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            z-index: 3;
+        }
+
+        .spinning {
+            animation: spin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(var(--final-rotation));
+            }
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 31px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 15px 31px rgba(0, 0, 0, 0.3);
+            animation: popupSlide 0.3s ease-out;
+            transform: scale(0.77);
+        }
+
+        @keyframes popupSlide {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup h2 {
+            color: #764ba2;
+            margin: 0 0 15px 0;
+            font-size: 1.93em;
+        }
+
+        .popup h3 {
+            color: #667eea;
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        .popup h4 {
+            color: #764ba2;
+            margin: 0;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="wheel-container">
+        <img src="wheel1.png" alt="Wheel" class="wheel">
+        <img src="pointer.png" alt="Pointer" class="pointer">
+        <img src="spin.png" alt="Spin" class="spin-button" id="spinButton">
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Congratulations</h2>
+            <h3 id="segmentName">Empower</h3>
+            <h4>Awesome</h4>
+        </div>
+    </div>
+
+    <script>
+        const spinButton = document.getElementById('spinButton');
+        const popup = document.getElementById('popup');
+        const segmentNameElement = document.getElementById('segmentName');
+        let isSpinning = false;
+
+        // Define the 10 segments of the wheel in order (starting from top center)
+        const wheelSegments = [
+            'inclusion',      // 0° - top center (starting position)
+            'win a gift',     // 36°
+            'empower',        // 72°
+            'respect',        // 108°
+            'equality',       // 144°
+            'voice',          // 180°
+            'leadership',     // 216°
+            'choice',         // 252°
+            'balance',        // 288°
+            'support'         // 324°
+        ];
+
+        function getSegmentAtTop(finalRotation) {
+            // Calculate which segment is at the top after rotation
+            // Since the wheel rotates clockwise, we need to account for the rotation
+            const segmentAngle = 360 / wheelSegments.length; // 36 degrees per segment
+            
+            // Normalize the rotation to 0-360 range
+            const normalizedRotation = finalRotation % 360;
+            
+            // Calculate which segment is at the top (0° position)
+            // We need to find which segment would be at the top after the rotation
+            const segmentIndex = Math.floor((360 - normalizedRotation) / segmentAngle) % wheelSegments.length;
+            
+            return wheelSegments[segmentIndex];
+        }
+
+        spinButton.addEventListener('click', function() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            
+            // Generate random rotation (minimum 3 full rotations + random amount)
+            const minRotations = 3;
+            const maxRotations = 8;
+            const randomRotations = minRotations + Math.random() * (maxRotations - minRotations);
+            const randomDegrees = Math.random() * 360;
+            const finalRotation = (randomRotations * 360) + randomDegrees;
+            
+            // Determine which segment will be at the top
+            const winningSegment = getSegmentAtTop(finalRotation);
+            
+            // Set the CSS custom property for the final rotation
+            spinButton.style.setProperty('--final-rotation', finalRotation + 'deg');
+            
+            spinButton.classList.add('spinning');
+            
+            // Disable clicking during spin
+            spinButton.style.pointerEvents = 'none';
+            
+            // Show popup after animation completes
+            setTimeout(() => {
+                // Update the popup with the winning segment
+                segmentNameElement.textContent = winningSegment;
+                popup.style.display = 'flex';
+                isSpinning = false;
+                spinButton.classList.remove('spinning');
+                spinButton.style.pointerEvents = 'auto';
+                
+                // Auto-hide popup after 3 seconds
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 3000);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
