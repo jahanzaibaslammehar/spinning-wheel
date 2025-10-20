@@ -24,9 +24,12 @@
         }
 
         .wheel {
-            width: 450px;
-            height: 800px;
+            width: 100%;
+            height: 100vh;
+            max-width: 450px;
+            max-height: 800px;
             position: relative;
+            object-fit: contain;
         }
 
         .spin-button {
@@ -34,10 +37,13 @@
             top: 55.8%;
             left: 51.3%;
             transform: translate(-50%, -50%);
-            width: 350px;
-            height: 350px;
+            width: 77.8%;
+            height: 43.75%;
+            max-width: 350px;
+            max-height: 350px;
             cursor: pointer;
             z-index: 2;
+            object-fit: contain;
         }
 
         .pointer {
@@ -45,9 +51,12 @@
             top: 31.7%;
             left: 51%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
+            width: 8.9%;
+            height: 5%;
+            max-width: 40px;
+            max-height: 40px;
             z-index: 3;
+            object-fit: contain;
         }
 
         .spinning {
@@ -113,6 +122,118 @@
             color: #764ba2;
             margin: 0;
             font-size: 1.2em;
+        }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            .wheel {
+                max-width: 90vw;
+                max-height: 90vh;
+            }
+            
+            .popup-content {
+                margin: 20px;
+                padding: 20px;
+                transform: scale(0.9);
+            }
+            
+            .popup h2 {
+                font-size: 1.5em;
+            }
+            
+            .popup h3 {
+                font-size: 1.2em;
+            }
+            
+            .popup h4 {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wheel {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+            
+            .popup-content {
+                margin: 15px;
+                padding: 15px;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Large screen support for 55-inch LED displays and similar */
+        @media (min-width: 1920px) {
+            .wheel {
+                max-width: 600px;
+                max-height: 1000px;
+            }
+            
+            .popup-content {
+                padding: 40px;
+                transform: scale(1.2);
+            }
+            
+            .popup h2 {
+                font-size: 2.5em;
+            }
+            
+            .popup h3 {
+                font-size: 2em;
+            }
+            
+            .popup h4 {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (min-width: 2560px) {
+            .wheel {
+                max-width: 800px;
+                max-height: 1200px;
+            }
+            
+            .popup-content {
+                padding: 50px;
+                transform: scale(1.5);
+            }
+            
+            .popup h2 {
+                font-size: 3em;
+            }
+            
+            .popup h3 {
+                font-size: 2.5em;
+            }
+            
+            .popup h4 {
+                font-size: 2em;
+            }
+        }
+
+        @media (min-width: 3840px) {
+            .wheel {
+                max-width: 1000px;
+                max-height: 1500px;
+            }
+            
+            .popup-content {
+                padding: 60px;
+                transform: scale(2);
+            }
+            
+            .popup h2 {
+                font-size: 4em;
+            }
+            
+            .popup h3 {
+                font-size: 3em;
+            }
+            
+            .popup h4 {
+                font-size: 2.5em;
+            }
         }
     </style>
 </head>
