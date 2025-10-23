@@ -14,6 +14,7 @@
             align-items: center;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .wheel-container {
@@ -48,12 +49,12 @@
             top: 55.8%;
             left: 51.3%;
             transform: translate(-50%, -50%);
-            width: 77.8%;
-            height: 43.75%;
-            max-width: 350px;
-            max-height: 350px;
-            min-width: 100px;
-            min-height: 100px;
+            width: 80%;
+            height: 50%;
+            max-width: 400px;
+            max-height: 400px;
+            min-width: 120px;
+            min-height: 120px;
             cursor: pointer;
             z-index: 2;
             object-fit: contain;
@@ -144,9 +145,21 @@
 
         /* Responsive design for mobile devices */
         @media (max-width: 768px) {
+            body {
+                align-items: stretch;
+            }
+            
+            .wheel-container {
+                width: 100vw;
+                height: 100vh;
+                align-items: stretch;
+            }
+            
             .wheel {
-                max-width: 80vw;
-                max-height: 80vh;
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                max-height: none;
             }
             
             .pointer-and-wheel-container {
@@ -155,12 +168,12 @@
             }
             
             .spin-button {
-                width: 85%;
-                height: 50%;
-                min-width: 120px;
-                min-height: 120px;
-                max-width: 320px;
-                max-height: 320px;
+                width: 95%;
+                height: 65%;
+                min-width: 150px;
+                min-height: 150px;
+                max-width: 400px;
+                max-height: 400px;
             }
             
             .popup-content {
@@ -184,8 +197,10 @@
 
         @media (max-width: 480px) {
             .wheel {
-                max-width: 70vw;
-                max-height: 70vh;
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                max-height: none;
             }
             
             .pointer-and-wheel-container {
@@ -194,12 +209,12 @@
             }
             
             .spin-button {
-                width: 90%;
-                height: 55%;
-                min-width: 100px;
-                min-height: 100px;
-                max-width: 250px;
-                max-height: 250px;
+                width: 95%;
+                height: 70%;
+                min-width: 120px;
+                min-height: 120px;
+                max-width: 300px;
+                max-height: 300px;
             }
             
             .popup-content {
@@ -211,18 +226,25 @@
 
         /* Extra small mobile devices */
         @media (max-width: 360px) {
+            .wheel {
+                width: 100vw;
+                height: 100vh;
+                max-width: none;
+                max-height: none;
+            }
+            
             .pointer-and-wheel-container {
                 width: 100%;
                 height: 100%;
             }
             
             .spin-button {
-                width: 95%;
-                height: 60%;
-                min-width: 80px;
-                min-height: 80px;
-                max-width: 200px;
-                max-height: 200px;
+                width: 98%;
+                height: 75%;
+                min-width: 100px;
+                min-height: 100px;
+                max-width: 250px;
+                max-height: 250px;
             }
         }
 
