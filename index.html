@@ -41,9 +41,16 @@
             height: 43.75%;
             max-width: 350px;
             max-height: 350px;
+            min-width: 100px;
+            min-height: 100px;
             cursor: pointer;
             z-index: 2;
             object-fit: contain;
+            transition: transform 0.1s ease;
+        }
+
+        .spin-button:hover {
+            transform: translate(-50%, -50%) scale(1.05);
         }
 
         .pointer {
@@ -131,6 +138,13 @@
                 max-height: 90vh;
             }
             
+            .spin-button {
+                min-width: 80px;
+                min-height: 80px;
+                max-width: 280px;
+                max-height: 280px;
+            }
+            
             .popup-content {
                 margin: 20px;
                 padding: 20px;
@@ -156,6 +170,13 @@
                 max-height: 95vh;
             }
             
+            .spin-button {
+                min-width: 60px;
+                min-height: 60px;
+                max-width: 200px;
+                max-height: 200px;
+            }
+            
             .popup-content {
                 margin: 15px;
                 padding: 15px;
@@ -168,6 +189,13 @@
             .wheel {
                 max-width: 600px;
                 max-height: 1000px;
+            }
+            
+            .spin-button {
+                max-width: 450px;
+                max-height: 450px;
+                min-width: 150px;
+                min-height: 150px;
             }
             
             .popup-content {
@@ -194,6 +222,13 @@
                 max-height: 1200px;
             }
             
+            .spin-button {
+                max-width: 600px;
+                max-height: 600px;
+                min-width: 200px;
+                min-height: 200px;
+            }
+            
             .popup-content {
                 padding: 50px;
                 transform: scale(1.5);
@@ -218,6 +253,13 @@
                 max-height: 1500px;
             }
             
+            .spin-button {
+                max-width: 800px;
+                max-height: 800px;
+                min-width: 250px;
+                min-height: 250px;
+            }
+            
             .popup-content {
                 padding: 60px;
                 transform: scale(2);
@@ -239,9 +281,9 @@
 </head>
 <body>
     <div class="wheel-container">
-        <img src="wheel2.png" alt="Wheel" class="wheel">
+        <img src="wheel3.png" alt="Wheel" class="wheel">
         <img src="pointer.png" alt="Pointer" class="pointer">
-        <img src="spin1.png" alt="Spin" class="spin-button" id="spinButton">
+        <img src="spin2.png" alt="Spin" class="spin-button" id="spinButton">
     </div>
 
     <div class="popup" id="popup">
