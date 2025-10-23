@@ -134,15 +134,17 @@
         /* Responsive design for mobile devices */
         @media (max-width: 768px) {
             .wheel {
-                max-width: 90vw;
-                max-height: 90vh;
+                max-width: 80vw;
+                max-height: 80vh;
             }
             
             .spin-button {
-                min-width: 80px;
-                min-height: 80px;
-                max-width: 280px;
-                max-height: 280px;
+                width: 85%;
+                height: 50%;
+                min-width: 120px;
+                min-height: 120px;
+                max-width: 320px;
+                max-height: 320px;
             }
             
             .popup-content {
@@ -166,21 +168,35 @@
 
         @media (max-width: 480px) {
             .wheel {
-                max-width: 95vw;
-                max-height: 95vh;
+                max-width: 70vw;
+                max-height: 70vh;
             }
             
             .spin-button {
-                min-width: 60px;
-                min-height: 60px;
-                max-width: 200px;
-                max-height: 200px;
+                width: 90%;
+                height: 55%;
+                min-width: 100px;
+                min-height: 100px;
+                max-width: 250px;
+                max-height: 250px;
             }
             
             .popup-content {
                 margin: 15px;
                 padding: 15px;
                 transform: scale(0.8);
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 360px) {
+            .spin-button {
+                width: 95%;
+                height: 60%;
+                min-width: 80px;
+                min-height: 80px;
+                max-width: 200px;
+                max-height: 200px;
             }
         }
 
